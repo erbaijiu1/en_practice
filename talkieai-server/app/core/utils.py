@@ -95,7 +95,7 @@ def save_file(upload_file: UploadFile) -> str:
     file_path = f'{Config.TEMP_SAVE_FILE_PATH}/{filename}'
     if not os.path.exists(Config.TEMP_SAVE_FILE_PATH):
         os.makedirs(Config.TEMP_SAVE_FILE_PATH)
-    with open(file_path, 'wb') as buffer:
+    with open(file_path, 'wb', encoding='utf-8') as buffer:
         shutil.copyfileobj(upload_file.file, buffer)
     return filename
 
@@ -135,7 +135,7 @@ def save_image_file(upload_file: UploadFile) -> str:
     if not os.path.exists(os.path.dirname(file_full_path)):
         os.makedirs(os.path.dirname(file_full_path))
 
-    with open(file_full_path, "wb") as buffer:
+    with open(file_full_path, "wb", encoding='utf-8') as buffer:
         shutil.copyfileobj(upload_file.file, buffer)
     return filename
 
@@ -151,7 +151,7 @@ def save_voice_file(upload_file: UploadFile, prefix='') -> str:
     if not os.path.exists(os.path.dirname(file_full_path)):
         os.makedirs(os.path.dirname(file_full_path))
 
-    with open(file_full_path, "wb") as buffer:
+    with open(file_full_path, "wb", encoding='utf-8') as buffer:
         shutil.copyfileobj(upload_file.file, buffer)
     return filename
 

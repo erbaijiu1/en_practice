@@ -61,7 +61,7 @@ def get_file(file_name: str, response: Response):
     file_path = voice_file_get_path(file_name)
     # 判断文件是否存在
     if os.path.isfile(file_path):
-        with open(file_path, "rb") as file:
+        with open(file_path, "rb", encoding='utf-8') as file:
             contents = file.read()
             response.headers["Content-Type"] = "application/octet-stream"
             response.headers[
