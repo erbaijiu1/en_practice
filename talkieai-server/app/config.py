@@ -26,6 +26,9 @@ class Config:
     # 智谱AI配置
     ZHIPU_AI_API_KEY = os.getenv('ZHIPU_AI_API_KEY')
     ZHIPU_AI_MODEL = os.getenv('ZHIPU_AI_MODEL')
+    # 通义AI配置
+    TONGYI_AI_API_KEY = os.getenv('TONGYI_AI_API_KEY')
+    TONGYI_AI_MODEL = os.getenv('TONGYI_AI_MODEL')
 
     # WeChat
     WECHAT_APP_ID = os.getenv('WECHAT_APP_ID')
