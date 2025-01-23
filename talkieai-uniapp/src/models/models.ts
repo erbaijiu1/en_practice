@@ -71,3 +71,14 @@ export interface Prompt {
   text?: string;
   translateShow?: boolean;
 }
+
+export interface PracticeSentence {
+  id?: string | null;
+  type: string;
+  content: string;
+  translation: string;
+  message_id?: string | null;
+  create_time?: string | null;
+  struct: string;
+  words: string;
+}

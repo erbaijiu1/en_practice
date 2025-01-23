@@ -28,6 +28,11 @@
       </view>
 
       <Topics class="topic-component" />
+
+      <view>
+        <text class="visitor-login" @tap="goToWordsPractice()">6000单词快速记</text>
+      </view>
+
     </view>
   </view>
 </template>
@@ -78,6 +83,13 @@ const goChat = () => {
     }
   });
 };
+
+const goToWordsPractice = () => {
+  uni.navigateTo({
+    url: '/pages/words_practice/index'
+  });
+};
+
 </script>
 <style scoped lang="less">
 @import url('@/less/global.less');
