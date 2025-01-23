@@ -12,6 +12,7 @@ from app.api.account_routes import router as account_routes
 from app.api.message_routes import router as message_routes
 from app.api.session_routes import router as session_routes
 from app.api.topics_route import router as topic_routes
+from app.api.words_practice_routes import router as words_practice_routes
 
 app = FastAPI()
 
@@ -29,6 +30,7 @@ app.include_router(topic_routes, prefix=f"{Config.API_PREFIX}/v1")
 app.include_router(sys_routes, prefix=f"{Config.API_PREFIX}/v1")
 app.include_router(session_routes, prefix=f"{Config.API_PREFIX}/v1")
 app.include_router(message_routes, prefix=f"{Config.API_PREFIX}/v1")
+app.include_router(words_practice_routes, prefix=f"{Config.API_PREFIX}/v1")
 
 
 @app.exception_handler(Exception)

@@ -104,7 +104,7 @@ def speech_content_api(
     """获取文件"""
     file_path = voice_file_get_path(speech_result["file"])
     # 判断文件是否存在
-    with open(file_path, "rb", encoding='utf-8') as file:
+    with open(file_path, "rb") as file:
         contents = file.read()
         headers = {
             "Content-Type": "audio/wav",

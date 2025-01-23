@@ -3,3 +3,5 @@
 /talkieai-uniapp/node_modules/
 /.idea/
 talkieai-server/app/
+talkieai-uniapp/dist/
+talkieai-server/None/
