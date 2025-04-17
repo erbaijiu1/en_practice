@@ -70,7 +70,7 @@ class TopicSessionRelation(Base):
     update_time = Column("update_time", DateTime, default=datetime.datetime.now)
 
     # topic_id 增加搜索索引
-    topic_id_index = Index("topic_id_index", topic_id)
+    topic_id_index = Index("topic_id_index_on_topic_session_relation", topic_id)
     # session_id 增加搜索索引
     session_id_index = Index("session_id_index", session_id)    
 
@@ -113,7 +113,7 @@ class TopicTargetEntity(Base):
     update_time = Column("update_time", DateTime, default=datetime.datetime.now)
 
     # topic_id 增加搜索索引
-    topic_id_index = Index("topic_id_index", topic_id)
+    topic_id_index = Index("topic_id_index_on_topic_target", topic_id)
 
 # 话题短语
 class TopicPhraseEntity(Base):
@@ -138,7 +138,7 @@ class TopicPhraseEntity(Base):
     update_time = Column("update_time", DateTime, default=datetime.datetime.now)
 
     # topic_id 增加搜索索引
-    topic_id_index = Index("topic_id_index", topic_id)
+    topic_id_index = Index("topic_id_index_on_topic_phrase", topic_id)
 
 
 

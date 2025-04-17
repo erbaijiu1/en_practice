@@ -1,3 +1,5 @@
+import sqlite3
+
 from sqlalchemy import create_engine, event
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -8,7 +10,11 @@ from sqlalchemy.exc import DisconnectionError
 def checkout_listener(dbapi_con, con_record, con_proxy):
     try:
         try:
-            dbapi_con.ping(False)
+            if isinstance(dbapi_con, sqlite3.Connection):
+                # SQLite无需ping，可省略
+                pass
+            else:
+                dbapi_con.ping(False)
         except TypeError:
             dbapi_con.ping()
     except dbapi_con.OperationalError as exc:
