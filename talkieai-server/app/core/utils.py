@@ -151,7 +151,7 @@ def save_voice_file(upload_file: UploadFile, prefix='') -> str:
     if not os.path.exists(os.path.dirname(file_full_path)):
         os.makedirs(os.path.dirname(file_full_path))
 
-    with open(file_full_path, "wb", encoding='utf-8') as buffer:
+    with open(file_full_path, "wb") as buffer:
         shutil.copyfileobj(upload_file.file, buffer)
     return filename
 
