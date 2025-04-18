@@ -12,7 +12,7 @@ router = APIRouter()
 @router.get("/practice/list", name="get practice list")
 def get_word_list(
     page: int = 1,
-    page_size: int = 10,
+    page_size: int = 1000,
     list_id: int = 1,
     db: Session = Depends(get_db),
 ):

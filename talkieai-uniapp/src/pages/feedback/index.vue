@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<CommonHeader :leftIcon="true" :back-fn="handleBackPage" class="header" title="Talkie">
+		<CommonHeader :leftIcon="true" :back-fn="handleBackPage" class="header" title="TalkAnytime">
 			<template v-slot:content>
 				<text>反馈</text>
 			</template>
@@ -44,7 +44,7 @@ const contact = ref('user');
 
 onMounted(() => {
 	uni.setNavigationBarTitle({
-		title: 'TalkieAI'
+		title: 'TalkAnytime'
 	});
 });
 

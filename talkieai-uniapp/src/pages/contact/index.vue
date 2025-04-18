@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<CommonHeader :leftIcon='true' :back-fn="handleBackPage" class="header" title="Talkie">
+		<CommonHeader :leftIcon='true' :back-fn="handleBackPage" class="header" title="TalkAnytime">
 			<template v-slot:content>
 				<text>联系我们</text>
 			</template>
@@ -19,7 +19,7 @@ import { ref, reactive, onMounted } from "vue";
 
 onMounted(() => {
 	uni.setNavigationBarTitle({
-		title: 'TalkieAI'
+		title: 'TalkAnytime'
 	});
 });
 /**

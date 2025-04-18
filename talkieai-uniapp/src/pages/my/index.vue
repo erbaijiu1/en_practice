@@ -1,6 +1,6 @@
 <template>
 	<view class="my-container">
-		<CommonHeader class="header" title="Talkie">
+		<CommonHeader class="header" title="TalkAnytime">
 			<template v-slot:content>
 				<text>个人中心</text>
 			</template>
@@ -74,7 +74,7 @@ const accountInfo = ref<AccountInfo>({ account_id: '', today_chat_count: 0, tota
 
 onMounted(() => {
 	uni.setNavigationBarTitle({
-		title: 'TalkieAI'
+		title: 'TalkAnytime'
 	});
 });
 

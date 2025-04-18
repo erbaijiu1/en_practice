@@ -49,7 +49,7 @@ import type { Collect } from "@/models/index";
 
 onLoad((props) => {
     uni.setNavigationBarTitle({
-		title: 'Talkie'
+		title: 'TalkAnytime'
 	});
     topicId.value = props.topicId;
     initData(props.topicId);

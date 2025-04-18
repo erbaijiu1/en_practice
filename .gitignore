@@ -5,3 +5,11 @@
 talkieai-server/app/
 talkieai-uniapp/dist/
 talkieai-server/None/
+talkieai-server/.idea/dataSources.xml
+talkieai-server/.idea/misc.xml
+talkieai-server/.idea/modules.xml
+talkieai-server/.idea/talkieai-server.iml
+talkieai-server/.idea/vcs.xml
+talkieai-server/.idea/inspectionProfiles/profiles_settings.xml
+talkieai-server/.idea/inspectionProfiles/Project_Default.xml
+.DS_Store

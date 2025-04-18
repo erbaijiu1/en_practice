@@ -1,17 +1,19 @@
 
 <template>
   <view>
-    <CommonHeader title="Talkie">
+    <CommonHeader title="TalkAnytime">
       <template v-slot:content>
-        <text>练习</text>
+        <text>单词练习</text>
       </template>
     </CommonHeader>
+
     <view class="content">
       <view class="chat-tab-box">
-        <view v-for="i in 6" :key="i" :class="`chat-tab ${tabNum === i ? 'chat-tab-actice' : ''}` " @tap="tabChange(i)">
+        <view v-for="i in 111" :key="i" :class="`chat-tab ${tabNum === i ? 'chat-tab-actice' : ''}` " @tap="tabChange(i)">
           list {{ i }}
         </view>
       </view>
+
       <view class="chat-tab-content">
         <block v-for="([each_list_id, module_list]) in totalContens" :key="each_list_id">
           <scroll-view :id="`hat-tab-content-${each_list_id}`" scroll-y="true" @scrolltolower="onScroll"
@@ -58,7 +60,7 @@ const totalContens = ref<Map<number, any>>(new Map());
 
 onMounted(() => {
   uni.setNavigationBarTitle({
-    title: 'TalkieAI'
+    title: 'TalkAnytime'
   });
 });
 
@@ -109,11 +111,11 @@ const get_practice_list = (list_id: number) => {
     });
 
     if (totalContens.value.has(list_id)) {
-          const oldOneListContents = totalContens.value.get(list_id);
-          totalContens.value.set(list_id, new Map([...oldOneListContents, ...oneListContents.value]));
-        } else {
-          totalContens.value.set(Number(list_id), oneListContents.value);
-        }
+      const oldOneListContents = totalContens.value.get(list_id);
+      totalContens.value.set(list_id, new Map([...oldOneListContents, ...oneListContents.value]));
+    } else {
+      totalContens.value.set(Number(list_id), oneListContents.value);
+    }
 
   });
 }
@@ -199,6 +201,7 @@ const onScroll = (event: any) => {
     transition: 0.1s all linear;
     height: 50rpx;
     line-height: 50rpx;
+    min-width: fit-content;
   }
 
   .chat-tab-actice {

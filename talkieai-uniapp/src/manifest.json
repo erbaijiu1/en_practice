@@ -111,6 +111,6 @@
     "vueVersion" : "3",
     "h5" : {
         "template" : "index.html",
-        "title" : "TalkieAI"
+        "title" : "TalkAnytime"
     }
 }

@@ -109,7 +109,7 @@ const sendMessageHandler = (info: any) => {
 onLoad((option: any) => {
   initData(option.sessionId);
   uni.setNavigationBarTitle({
-    title: 'TalkieAI'
+    title: 'TalkAnytime'
   });
   console.log('Onload')
   $bus.on("SendMessage", sendMessageHandler);

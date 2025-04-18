@@ -66,7 +66,7 @@ const swiperCurrent = ref<number>(0);
 
 onLoad((options: any) => {
     uni.setNavigationBarTitle({
-		title: 'Talkie'
+		title: 'TalkAnytime'
 	});
     if (options.redirectType) {
         redirectType.value = options.redirectType;

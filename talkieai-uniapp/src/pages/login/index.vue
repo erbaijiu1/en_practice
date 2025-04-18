@@ -2,7 +2,7 @@
   <view class="container">
     <image class="logo" src="/static/logo.png"></image>
     <text class="title">
-      欢迎使用Talkie AI
+      欢迎使用TalkAnytime AI
     </text>
     <text class="sub-title">
       练习口语、写作的好帮手
@@ -21,7 +21,7 @@ const loginLoading = ref(false);
 
 onMounted(() => {
   uni.setNavigationBarTitle({
-		title: 'Talkie'
+		title: 'TalkAnytime'
 	});
   // 是否有保存登录的token
   let storageToken = uni.getStorageSync(X_TOKEN);

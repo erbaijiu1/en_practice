@@ -1,6 +1,6 @@
 <template>
   <view>
-    <CommonHeader title="Talkie">
+    <CommonHeader title="TalkAnytime">
       <template v-slot:content>
         <text>练习</text>
       </template>
@@ -48,7 +48,7 @@ const sentenceLoading = ref<boolean>(false);
 
 onMounted(() => {
   uni.setNavigationBarTitle({
-    title: 'TalkieAI'
+    title: 'TalkAnytime'
   });
 });
 

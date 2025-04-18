@@ -2,7 +2,7 @@
   <view>
     <CommonHeader backgroundColor="#fff">
       <template v-slot:content>
-        <text>Talkie</text>
+        <text>TalkAnytime</text>
       </template>
     </CommonHeader>
     <view class="content">

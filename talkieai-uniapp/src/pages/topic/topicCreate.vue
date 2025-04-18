@@ -86,7 +86,7 @@ const myTopics = ref<TopicModel[]>([]);
 
 onLoad(() => {
     uni.setNavigationBarTitle({
-		title: 'Talkie'
+		title: 'TalkAnytime'
 	});
     initMyTopics();
 });

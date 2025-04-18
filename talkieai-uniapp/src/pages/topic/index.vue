@@ -78,7 +78,7 @@ const topicDetail = ref(null);
 
 onLoad((props) => {
     uni.setNavigationBarTitle({
-		title: 'Talkie'
+		title: 'TalkAnytime'
 	});
 
     getTopicDetail(props.topicId);

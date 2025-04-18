@@ -1,6 +1,6 @@
 <template>
     <view>
-        <CommonHeader :leftIcon="true" :back-fn="handleBackPage" title="Talkie">
+        <CommonHeader :leftIcon="true" :back-fn="handleBackPage" title="TalkAnytime">
             <template v-slot:content>
                 <text>设置</text>
             </template>
@@ -65,7 +65,7 @@ const sessionId = ref<string>("");
 
 onLoad((options: any) => {
     uni.setNavigationBarTitle({
-		title: 'Talkie'
+		title: 'TalkAnytime'
 	});
     sessionId.value = options.sessionId;
 });

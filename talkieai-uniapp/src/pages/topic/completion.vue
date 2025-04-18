@@ -80,7 +80,7 @@ const messages = ref<Message[]>([]);
 
 onLoad((props) => {
     uni.setNavigationBarTitle({
-		title: 'Talkie'
+		title: 'TalkAnytime'
 	});
     if (props.redirectType) {
         redirectType.value = props.redirectType;

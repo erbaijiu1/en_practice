@@ -69,7 +69,7 @@ const topics = ref([]);
 
 onMounted(() => {
     uni.setNavigationBarTitle({
-        title: "Talkie",
+        title: "TalkAnytime",
     });
     selectType('ROLE_PLAY');
 });
