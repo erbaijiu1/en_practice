@@ -23,7 +23,7 @@ class PracticeService:
         # 查询并分页
         query = self.db.query(WordsPracticeEntity) \
             .filter(WordsPracticeEntity.list_id == list_id) \
-            .order_by(WordsPracticeEntity.id) \
+            .order_by(WordsPracticeEntity.main_words) \
             .offset(offset) \
             .limit(page_size)
 

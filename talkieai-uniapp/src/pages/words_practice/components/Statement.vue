@@ -3,9 +3,12 @@
     <view class="chat-list-box">
       <view class="chat-list-left-box">
         <view class="chat-list-left-top">
-          <text>{{ collect.content }}</text>
+          <view class="selectable-text" selectable @touchstart="handleTextTouch">
+            {{ collect.content }} 
+          </view>
         </view>
       </view>
+
       <view class="chat-list-action-box">
         <AudioPlayer class="chat-list-action_playing btn-box" :messageId="collect.message_id"
           :content="collect.content" />
@@ -21,6 +24,8 @@
     </view>
 
   </view>
+  <WordAnalysisPopup ref="wordAnalysisPopup" />
+
 </template>
 
 <script setup lang="ts">
@@ -28,6 +33,33 @@ import { ref, defineEmits, defineProps } from "vue";
 import AudioPlayer from "@/components/AudioPlayer.vue";
 import type { PracticeSentence } from "@/models/models";
 import accountRequest from "@/api/account";
+import WordAnalysisPopup from "@/components/WordAnalysisPopup.vue";
+import { nextTick } from 'vue';
+
+// 添加选中功能
+const wordAnalysisPopup = ref(null);
+// 选中事件处理函数
+const handleTextTouch = () => {
+  // 获取选中文本（兼容不同平台）
+  const selection = uni.getSelection();
+  const selectedText = selection.text || selection.selectedText;
+  console.log(selectedText); 
+  // trim selectedText
+  // selectedText = selectedText.trim();
+  // if (selectedText) {
+  //   // 调用弹窗的 open 方法
+  //   wordAnalysisPopup.value.open(selectedText.trim());
+  // }
+
+  const reg = /[^a-zA-Z]/g;
+  const word = selectedText.replace(reg, "");
+  nextTick(() => {
+    setTimeout(() => {
+      wordAnalysisPopup.value.open(word);
+    }, 100);
+  });
+
+};
 
 const emit = defineEmits();
 // 定义Collect类型为prop
@@ -125,6 +157,13 @@ const handleDelete = () => {
     height: 32rpx;
     display: flex;
     align-items: center;
+  }
+
+  /* 新增样式 */
+  .selectable-text {
+    white-space: pre-wrap;
+    // -webkit-user-select: text !important; // 添加 !important
+    user-select: text !important; // 添加 !important
   }
 }
 </style>
