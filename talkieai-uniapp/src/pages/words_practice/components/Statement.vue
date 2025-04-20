@@ -3,7 +3,7 @@
     <view class="chat-list-box">
       <view class="chat-list-left-box">
         <view class="chat-list-left-top">
-          <view class="selectable-text" selectable @touchstart="handleTextTouch">
+          <view class="selectable-text" selectable @mouseup="handleTextTouch">
             {{ collect.content }} 
           </view>
         </view>
@@ -38,28 +38,35 @@ import { nextTick } from 'vue';
 
 // 添加选中功能
 const wordAnalysisPopup = ref(null);
-// 选中事件处理函数
-const handleTextTouch = () => {
-  // 获取选中文本（兼容不同平台）
-  const selection = uni.getSelection();
-  const selectedText = selection.text || selection.selectedText;
-  console.log(selectedText); 
-  // trim selectedText
-  // selectedText = selectedText.trim();
-  // if (selectedText) {
-  //   // 调用弹窗的 open 方法
-  //   wordAnalysisPopup.value.open(selectedText.trim());
-  // }
 
-  const reg = /[^a-zA-Z]/g;
-  const word = selectedText.replace(reg, "");
-  nextTick(() => {
-    setTimeout(() => {
+const handleTextTouch = (event: TouchEvent) => {
+  // console.log("handleTextTouch");
+  // Use mouseup event for better text selection timing
+  const handleSelection = () => {
+  // console.log("handleTextTouch, here.");
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return;
+    
+    const range = selection.getRangeAt(0);
+    const selectedText = range.toString().trim();
+    
+    // Extract pure word characters
+    // const word = selectedText.replace(/[^a-zA-Z]/g, '');
+    const word = selectedText
+    
+    if (word) {
+      console.log('Selected Word:', word);
       wordAnalysisPopup.value.open(word);
-    }, 100);
-  });
+    }
+    
+    // Cleanup
+    document.removeEventListener('mouseup', handleSelection);
+  };
 
+  // Add mouseup listener (works better with text selection)
+  document.addEventListener('mouseup', handleSelection);
 };
+
 
 const emit = defineEmits();
 // 定义Collect类型为prop
