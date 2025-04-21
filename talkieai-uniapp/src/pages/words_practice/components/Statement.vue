@@ -3,7 +3,8 @@
     <view class="chat-list-box">
       <view class="chat-list-left-box">
         <view class="chat-list-left-top">
-          <view class="selectable-text" selectable @mouseup="handleTextTouch">
+          <view class="selectable-text" selectable @mouseup="handleTextTouch"   @touchend="handleTextTouch"
+          >
             {{ collect.content }} 
           </view>
         </view>
@@ -39,8 +40,10 @@ import { nextTick } from 'vue';
 // 添加选中功能
 const wordAnalysisPopup = ref(null);
 
-const handleTextTouch = (event: TouchEvent) => {
+const handleTextTouch = (event: MouseEvent | TouchEvent) => {
   // console.log("handleTextTouch");
+  const targetEvent = event as MouseEvent | TouchEvent;
+
   // Use mouseup event for better text selection timing
   const handleSelection = () => {
   // console.log("handleTextTouch, here.");

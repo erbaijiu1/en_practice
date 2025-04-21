@@ -1,6 +1,6 @@
 import datetime
 
-from sqlalchemy import Column, String, DateTime, Integer, Index, Text
+from sqlalchemy import Column, String, DateTime, Integer, Index, Text, text
 from app.db import Base, engine
 
 class MessageSessionEntity(Base):
@@ -73,6 +73,24 @@ class MessageGrammarEntity(Base):
     type = Column("type", String(80), nullable=False)
     result = Column("result", Text, nullable=False)
     create_time = Column("create_time", DateTime, default=datetime.datetime.now)
+
+class BusPromptConfig(Base):
+    __tablename__ = 't_bus_promote_config'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    business_name = Column(String(200), nullable=False, comment='业务名称')
+    system_prompt = Column(Text, nullable=False, comment='系统提示词配置')
+    user_prompt = Column(Text, nullable=False, comment='用户提示词配置')
+    user_other_info = Column(String(1024), nullable=False, comment='用户其他信息')
+    model_name = Column(String(50), nullable=False, comment='模型名称')
+    model_params = Column(String(50), nullable=False, comment='模型参数')
+    rsp_content_type = Column(String(50), nullable=False, default='str', comment='响应内容类型')
+    rsp_field_spec = Column(Text, nullable=False, comment='响应字段规范')
+    create_time = Column(DateTime, server_default=text("CURRENT_TIMESTAMP"))
+    update_time = Column(DateTime, server_default=text("CURRENT_TIMESTAMP"))
+    # 创建索引
+    __table_args__ = (
+        Index('idx_bus_promote_config', 'business_name'),  # 示例：为business_name创建索引
+    )
 
 # 数据库未创建表的话自动创建表
 Base.metadata.create_all(engine)
