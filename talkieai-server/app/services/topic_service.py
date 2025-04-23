@@ -1,5 +1,3 @@
-import json
-
 from sqlalchemy.orm import Session
 from app.core.utils import *
 from app.models.topic_models import *
@@ -7,7 +5,6 @@ from app.db.topic_entities import *
 from app.db.chat_entities import *
 from app.db.account_entities import *
 from app.ai.models import *
-from app.core.logging import logging
 from app.ai import chat_ai
 from app.core.azure_voice import *
 from app.models.chat_models import *

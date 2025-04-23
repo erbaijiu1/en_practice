@@ -7,11 +7,8 @@ from app.db.sys_entities import *
 from app.db.topic_entities import *
 from app.models.account_models import *
 from app.models.chat_models import *
-from app.services.account_service import AccountService
-from app.services.topic_service import TopicService
 
 from app.ai.models import *
-from app.ai import chat_ai
 from app.core.azure_voice import *
 from app.core.exceptions import *
 
@@ -27,9 +24,13 @@ class ChatService:
     """聊天核心类，会调用account_service与topic_service, 反向不可以引用"""
 
     def __init__(self, db: Session):
+        from app.services.account_service import AccountService
+        from app.services.topic_service import TopicService
+        from app.ai import chat_ai
         self.db = db
         self.account_service = AccountService(db)
         self.topic_service = TopicService(db)
+        self.chat_ai = chat_ai
 
     def get_settings_languages_example(self, language: str, account_id: str):
         """获取语言下的示例"""
@@ -77,10 +78,10 @@ class ChatService:
         # 区分自由聊天与话题聊天
         if session.type == "CHAT":
             language = self.account_service.get_account_target_language(account_id)
-            result = chat_ai.invoke_greet(GreetParams(language=language))
+            result = self.chat_ai.invoke_greet(GreetParams(language=language))
         elif session.type == "TOPIC":
             topic_greet_params = self.topic_service.get_topic_greet_params(session.id)
-            result = chat_ai.topic_invoke_greet(topic_greet_params)
+            result = self.chat_ai.topic_invoke_greet(topic_greet_params)
 
         sequence = self.__get_message_sequence() 
 
@@ -147,11 +148,11 @@ class ChatService:
             message_params = MessageParams(
                 language=target_language, name=Config.AI_NAME, messages=messages, styles=styles
             )
-            invoke_result = chat_ai.invoke_message(message_params)
+            invoke_result = self.chat_ai.invoke_message(message_params)
         elif session.type == 'TOPIC':
             topic_message_params = self.topic_service.get_topic_message_params(session.id)
             topic_message_params.messages = messages
-            invoke_result = chat_ai.topic_invoke_message(topic_message_params)
+            invoke_result = self.chat_ai.topic_invoke_message(topic_message_params)
             completed = invoke_result.completed
 
         add_system_message = self.__add_system_message(
@@ -194,7 +195,8 @@ class ChatService:
         word = self.db.query(SysCacheEntity).filter_by(key=f"word_{dto.word}").first()
         if word:
             return json.loads(word.value)
-        invoke_result = chat_ai.invoke_word_detail(WordDetailParams(word=dto.word))
+
+        invoke_result = self.chat_ai.invoke_word_detail(WordDetailParams(word=dto.word))
         result = invoke_result.__dict__
         result["original"] = dto.word
         # result 转换成字符串进行保存
@@ -218,7 +220,7 @@ class ChatService:
 
         content = message.content
         target_language = self.account_service.get_account_target_language(account_id)
-        result = chat_ai.invoke_grammar_analysis(
+        result = self.chat_ai.invoke_grammar_analysis(
             GrammarAnalysisParams(language=target_language, content=content)
         ).__dict__
         result["original"] = content
@@ -470,7 +472,7 @@ class ChatService:
             messages.append(self.initMessageResult(message))
 
         target_language = self.account_service.get_account_target_language(account_id)
-        return chat_ai.invoke_prompt_sentence(
+        return self.chat_ai.invoke_prompt_sentence(
             PromptSentenceParams(language=target_language, messages=messages)
         )
 
@@ -560,7 +562,7 @@ class ChatService:
 
     def translate_language(self, content: str, language: str):
         """翻译成参数中配置的语言"""
-        result = chat_ai.invoke_translate(
+        result = self.chat_ai.invoke_translate(
             TranslateParams(target_language=language, content=content)
         )
         return result

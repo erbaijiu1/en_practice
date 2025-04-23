@@ -2,6 +2,7 @@ from app.ai.impl.tongyi_ai import TongyiComponent
 from app.config import Config
 from app.ai.impl.zhipu_ai import ZhipuAIComponent
 from app.ai.impl.chat_gpt_ai import ChatGPTAI
+
 if Config.AI_SERVER=='CHAT_GPT':
     chat_ai = ChatGPTAI(api_key=Config.CHAT_GPT_KEY, base_url=Config.CHAT_GPT_PROXY, model=Config.CHAT_GPT_MODEL)
 elif Config.AI_SERVER=='ZHIPU':

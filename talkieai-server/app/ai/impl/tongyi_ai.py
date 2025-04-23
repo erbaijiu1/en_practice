@@ -8,6 +8,9 @@ from app.core.language import *
 from app.core.logging import logging
 from openai import OpenAI
 
+from app.db.db_business_imp import get_prompt_conf
+
+
 class TongyiInvokeDTO(BaseModel):
     messages: List[Dict]
     model: str
@@ -200,6 +203,17 @@ class TongyiComponent(ChatAI):
                 "content": f'提供一个单词，只需要简洁快速的用中文返回这个单词的音标与翻译，要求数据格式为json，音标放在属性phonetic中，音标的前后要加上"/"，翻译放在translation中， 这个单词是"{params.word}"',
             }
         ]
+
+        prompt_conf = get_prompt_conf("words_translate")
+        if prompt_conf and prompt_conf.user_prompt:
+            prompt_content = prompt_conf.user_prompt.replace("%translate_context%", params.word)
+            messages = [
+                {
+                    "role": "user",
+                    "content": prompt_content
+                }
+            ]
+
         invoke_dto = MessageInvokeDTO(messages=messages)
         result_json = self._original_invoke_chat_json(invoke_dto)
         return AIWordDetailResult(

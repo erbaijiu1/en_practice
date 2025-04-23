@@ -86,7 +86,7 @@ class SysCacheEntity(Base):
     __tablename__ = "sys_cache"
     id = Column("id", Integer, primary_key=True, autoincrement=True)
     key = Column("key", String(80), nullable=False)
-    value = Column("value", String(512), nullable=False)
+    value = Column("value", String(2048), nullable=False)
     create_time = Column("create_time", DateTime, default=datetime.datetime.now)
     update_time = Column("update_time", DateTime, default=datetime.datetime.now)
 
