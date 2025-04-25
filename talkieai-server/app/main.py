@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import JSONResponse
 
@@ -13,6 +13,7 @@ from app.api.message_routes import router as message_routes
 from app.api.session_routes import router as session_routes
 from app.api.topics_route import router as topic_routes
 from app.api.words_practice_routes import router as words_practice_routes
+from app.utils.logger_config import logger
 
 app = FastAPI()
 
@@ -62,3 +63,40 @@ async def user_access_denied_error_handler(_, exc: UserAccessDeniedException):
         },
         content=ApiResponse(code="403", status="FAILED", message=str(exc)).__dict__,
     )
+
+
+@app.middleware("http")
+async def log_all_requests(request: Request, call_next):
+    # 基础信息打印
+    logger.info(f"[{request.method}] {request.url}")
+
+    # GET参数打印
+    if request.method == "GET":
+        logger.info(f"GET参数: {dict(request.query_params)}")
+
+    # POST/PUT参数打印（支持JSON/FormData）
+    if request.method in ("POST", "PUT", "PATCH"):
+        # 读取请求体并缓存（解决body只能读取一次的问题）
+        body = await request.body()
+        logger.info(f"POST/PUT参数: {body.decode('utf-8')}")
+
+        # # 结构化解析尝试
+        # content_type = request.headers.get('content-type', '')
+        # try:
+        #     if 'application/json' in content_type:
+        #         params = await request.json()
+        #         logger.info(f"结构化JSON参数: {params}")
+        #     elif 'form-data' in content_type:
+        #         params = await request.form()
+        #         logger.info(f"结构化Form参数: {dict(params)}")
+        # except Exception as e:
+        #     logger.error(f"参数解析失败: {str(e)}")
+        #
+        # # 重建请求体（关键步骤）
+        # async def receive() -> Message:
+        #     return {"type": "http.request", "body": body}
+
+        # request._receive = receive
+
+    response = await call_next(request)
+    return response
