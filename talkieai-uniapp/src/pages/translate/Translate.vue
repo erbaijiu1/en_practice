@@ -35,11 +35,17 @@
 </template>
 
 <script>
+
+import chatRequest from '@/api/chat';
+import { ref } from 'vue';
+
 export default {
+
   data() {
     return {
       inputText: '',
       showResult: false,
+      wordDetailLoading: false,
       result: {
         english: '',
         pronunciation: '',
@@ -53,21 +59,40 @@ export default {
       // Input validation can be added here
     },
     translate() {
-      // Temporary mock data - should be replaced with real API calls
-      this.showResult = true;
-      this.result = {
-        english: this.inputText.includes(' ') ? this.inputText : 'hello',
-        pronunciation: '/həˈloʊ/',
-        chinese: this.inputText.includes(' ') ? this.inputText : '你好'
-      };
-      this.examples = [
-        'Hello, how are you?',
-        'Hello world!',
-        'Good morning, hello!'
-      ];
+      if (!this.inputText) {
+        uni.showToast({
+          title: 'Please enter text',
+          icon: 'none'
+        });
+        return;
+      }
+
+      this.wordDetailLoading = true;
+      chatRequest.wordDetail( {"word": this.inputText} ).then((res) => {
+          // wordPhoneticSymbol.value = res.data.phonetic;
+          // wordExplain.value = res.data.translation;
+          this.wordDetailLoading = false;
+          
+          console.log(res.data);
+          // Temporary mock data - should be replaced with real API calls
+          this.result = {
+            english: this.inputText,
+            pronunciation: res.data.phonetic,
+            chinese: res.data.translation
+          };
+          this.showResult = true;
+
+          this.examples = [
+            'Hello, how are you?',
+            'Hello world!',
+            'Good morning, hello!'
+          ];
+
+      });
+
     }
   }
-};
+}
 </script>
 
 <style>

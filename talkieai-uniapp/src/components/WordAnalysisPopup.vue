@@ -1,5 +1,5 @@
 <template>
-    <uni-popup ref="wordAnalysisPopup" type="bottom" :background-color="popupBackgoundColor">
+    <uni-popup ref="popupRef" type="bottom" :background-color="popupBackgoundColor">
         <view class="word-analysis-container">
             <view class="close-icon-box">
                 <image @tap="handleClose" class="close-icon" src="/static/icon_close.png"></image>
@@ -31,7 +31,7 @@ import Collect from '@/components/Collect.vue';
 const app = getApp();
 
 const word = ref('');
-const wordAnalysisPopup = ref(null);
+const popupRef = ref(null);
 const wordPhoneticSymbol = ref(null);
 const wordExplain = ref(null);
 const wordDetailLoading = ref(false);
@@ -45,7 +45,7 @@ onMounted(() => {
 });
 
 const handleClose = () => {
-    wordAnalysisPopup.value.close();
+    popupRef.value.close();
     wordPhoneticSymbol.value = null;
     wordExplain.value = null;
 };
@@ -58,7 +58,7 @@ const open = (wordText: string) => {
         wordExplain.value = res.data.translation;
         wordDetailLoading.value = false;
     });
-    wordAnalysisPopup.value.open();
+    popupRef.value.open();
 };
 
 defineExpose({

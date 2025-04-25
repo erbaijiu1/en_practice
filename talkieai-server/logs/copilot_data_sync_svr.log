@@ -1,0 +1,115 @@
+2025-04-23 17:43:28,544|[db_business_imp.py: 14]|ERROR|13036498944|Error occurred while querying promote conf: 'generator' object is not callable 
+2025-04-23 17:44:43,435|[db_business_imp.py: 13]|ERROR|6143012864|Error occurred while querying promote conf: 'generator' object does not support the context manager protocol 
+2025-04-23 17:44:44,549|[db_business_imp.py: 13]|ERROR|6143012864|Error occurred while querying promote conf: 'generator' object does not support the context manager protocol 
+2025-04-23 17:46:22,029|[db_business_imp.py: 14]|ERROR|6178729984|Error occurred while querying promote conf: 'generator' object does not support the context manager protocol 
+2025-04-23 17:46:23,161|[db_business_imp.py: 14]|ERROR|6178729984|Error occurred while querying promote conf: 'generator' object does not support the context manager protocol 
+2025-04-23 17:48:32,318|[db_business_imp.py: 13]|ERROR|6109392896|Error occurred while querying promote conf: 'generator' object has no attribute 'query' 
+2025-04-23 17:48:33,298|[db_business_imp.py: 13]|ERROR|6109392896|Error occurred while querying promote conf: 'generator' object has no attribute 'query' 
+2025-04-23 17:49:44,632|[db_business_imp.py: 13]|ERROR|6146273280|Error occurred while querying promote conf: 'generator' object does not support the context manager protocol 
+2025-04-23 17:49:45,573|[db_business_imp.py: 13]|ERROR|6146273280|Error occurred while querying promote conf: 'generator' object does not support the context manager protocol 
+2025-04-23 19:13:35,159|[db_business_imp.py: 13]|ERROR|6146273280|Error occurred while querying promote conf: 'generator' object does not support the context manager protocol 
+2025-04-23 19:14:14,802|[db_business_imp.py: 13]|ERROR|6146273280|Error occurred while querying promote conf: 'generator' object does not support the context manager protocol 
+2025-04-23 19:14:15,979|[db_business_imp.py: 13]|ERROR|6146273280|Error occurred while querying promote conf: 'generator' object does not support the context manager protocol 
+2025-04-23 19:15:30,061|[db_business_imp.py: 13]|ERROR|6191886336|Error occurred while querying promote conf: 'generator' object does not support the context manager protocol 
+2025-04-23 19:16:23,253|[db_business_imp.py: 16]|ERROR|6224031744|Error occurred while querying promote conf: 'Query' object has no attribute 'firstorNone' 
+2025-04-23 19:16:24,414|[db_business_imp.py: 16]|ERROR|6224031744|Error occurred while querying promote conf: 'Query' object has no attribute 'firstorNone' 
+2025-04-24 11:28:06,406|[main.py: 73]|INFO|8330577984|请求路径: /api/v1/account/role, 请求参数:  
+2025-04-24 11:28:06,409|[main.py: 73]|INFO|8330577984|请求路径: /api/v1/topics, 请求参数: type=ROLE_PLAY 
+2025-04-24 11:28:06,419|[main.py: 73]|INFO|8330577984|请求路径: /api/v1/account/role, 请求参数:  
+2025-04-24 11:28:06,420|[main.py: 73]|INFO|8330577984|请求路径: /api/v1/topics, 请求参数: type=ROLE_PLAY 
+2025-04-24 11:28:08,803|[main.py: 73]|INFO|8330577984|请求路径: /api/v1/practice/list, 请求参数: list_id=1 
+2025-04-24 11:28:08,808|[main.py: 73]|INFO|8330577984|请求路径: /api/v1/practice/list, 请求参数: list_id=1 
+2025-04-24 11:28:11,267|[main.py: 73]|INFO|8330577984|请求路径: /api/v1/message/word/detail, 请求参数:  
+2025-04-24 11:28:11,278|[main.py: 73]|INFO|8330577984|请求路径: /api/v1/account/collect, 请求参数: type=WORD&message_id=&content=government 
+2025-04-24 11:28:11,280|[main.py: 73]|INFO|8330577984|请求路径: /api/v1/account/collect, 请求参数: type=WORD&message_id=&content=government 
+2025-04-24 11:29:24,778|[main.py: 73]|INFO|8330577984|请求路径: /api/v1/account/role, 请求参数:  
+2025-04-24 11:29:28,379|[main.py: 73]|INFO|8330577984|请求路径: /api/v1/message/word/detail, 请求参数:  
+2025-04-24 11:35:10,519|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/account/role 
+2025-04-24 11:35:10,519|[main.py: 75]|INFO|8330577984|GET参数: {} 
+2025-04-24 11:35:13,347|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/practice/list?list_id=1 
+2025-04-24 11:35:13,347|[main.py: 75]|INFO|8330577984|GET参数: {'list_id': '1'} 
+2025-04-24 11:35:14,877|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:35:14,879|[main.py: 81]|INFO|8330577984|原始请求体: {"word":"government"} 
+2025-04-24 11:35:14,888|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/account/collect?type=WORD&message_id=&content=government 
+2025-04-24 11:35:14,888|[main.py: 75]|INFO|8330577984|GET参数: {'type': 'WORD', 'message_id': '', 'content': 'government'} 
+2025-04-24 11:35:44,370|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/account/role 
+2025-04-24 11:35:44,372|[main.py: 75]|INFO|8330577984|GET参数: {} 
+2025-04-24 11:35:46,988|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:35:46,989|[main.py: 81]|INFO|8330577984|原始请求体: aa 
+2025-04-24 11:37:09,991|[main.py: 71]|INFO|8330577984|[OPTIONS] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:37:09,994|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:37:09,994|[main.py: 81]|INFO|8330577984|POST/PUT参数: aa 
+2025-04-24 11:37:18,631|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:37:18,631|[main.py: 81]|INFO|8330577984|POST/PUT参数: aa 
+2025-04-24 11:37:43,597|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/account/role 
+2025-04-24 11:37:43,597|[main.py: 75]|INFO|8330577984|GET参数: {} 
+2025-04-24 11:37:43,614|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/topics?type=ROLE_PLAY 
+2025-04-24 11:37:43,614|[main.py: 75]|INFO|8330577984|GET参数: {'type': 'ROLE_PLAY'} 
+2025-04-24 11:37:46,016|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/practice/list?list_id=1 
+2025-04-24 11:37:46,016|[main.py: 75]|INFO|8330577984|GET参数: {'list_id': '1'} 
+2025-04-24 11:37:48,171|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:37:48,171|[main.py: 81]|INFO|8330577984|POST/PUT参数: {"word":"government"} 
+2025-04-24 11:37:48,184|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/account/collect?type=WORD&message_id=&content=government 
+2025-04-24 11:37:48,184|[main.py: 75]|INFO|8330577984|GET参数: {'type': 'WORD', 'message_id': '', 'content': 'government'} 
+2025-04-24 11:41:45,671|[main.py: 71]|INFO|8330577984|[OPTIONS] http://localhost:8097/api/v1/account/role 
+2025-04-24 11:41:45,673|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/account/role 
+2025-04-24 11:41:45,673|[main.py: 75]|INFO|8330577984|GET参数: {} 
+2025-04-24 11:41:45,676|[main.py: 71]|INFO|8330577984|[OPTIONS] http://localhost:8097/api/v1/topics?type=ROLE_PLAY 
+2025-04-24 11:41:45,685|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/topics?type=ROLE_PLAY 
+2025-04-24 11:41:45,685|[main.py: 75]|INFO|8330577984|GET参数: {'type': 'ROLE_PLAY'} 
+2025-04-24 11:41:51,984|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/account/role 
+2025-04-24 11:41:51,985|[main.py: 75]|INFO|8330577984|GET参数: {} 
+2025-04-24 11:41:51,995|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/topics?type=ROLE_PLAY 
+2025-04-24 11:41:51,995|[main.py: 75]|INFO|8330577984|GET参数: {'type': 'ROLE_PLAY'} 
+2025-04-24 11:41:56,688|[main.py: 71]|INFO|8330577984|[OPTIONS] http://localhost:8097/api/v1/practice/list?list_id=1 
+2025-04-24 11:41:56,712|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/practice/list?list_id=1 
+2025-04-24 11:41:56,713|[main.py: 75]|INFO|8330577984|GET参数: {'list_id': '1'} 
+2025-04-24 11:41:59,110|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:41:59,111|[main.py: 81]|INFO|8330577984|POST/PUT参数: {"word":"about"} 
+2025-04-24 11:41:59,118|[main.py: 71]|INFO|8330577984|[OPTIONS] http://localhost:8097/api/v1/account/collect?type=WORD&message_id=&content=about 
+2025-04-24 11:41:59,120|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/account/collect?type=WORD&message_id=&content=about 
+2025-04-24 11:41:59,120|[main.py: 75]|INFO|8330577984|GET参数: {'type': 'WORD', 'message_id': '', 'content': 'about'} 
+2025-04-24 11:42:14,689|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:42:14,689|[main.py: 81]|INFO|8330577984|POST/PUT参数: {"word":"aa"} 
+2025-04-24 11:45:21,972|[main.py: 71]|INFO|8330577984|[OPTIONS] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:45:21,976|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:45:21,976|[main.py: 81]|INFO|8330577984|POST/PUT参数: {"word":"周四"} 
+2025-04-24 11:45:23,688|[main.py: 71]|INFO|8330577984|[OPTIONS] http://localhost:8097/api/v1/account/visitor-login 
+2025-04-24 11:45:23,689|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/account/visitor-login 
+2025-04-24 11:45:23,689|[main.py: 81]|INFO|8330577984|POST/PUT参数: {"fingerprint":"68e045708d2d0af33d30e79da4a13521"} 
+2025-04-24 11:45:23,988|[main.py: 71]|INFO|8330577984|[OPTIONS] http://localhost:8097/api/v1/account/role 
+2025-04-24 11:45:23,989|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/account/role 
+2025-04-24 11:45:23,989|[main.py: 75]|INFO|8330577984|GET参数: {} 
+2025-04-24 11:45:23,991|[main.py: 71]|INFO|8330577984|[OPTIONS] http://localhost:8097/api/v1/topics?type=ROLE_PLAY 
+2025-04-24 11:45:23,993|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/topics?type=ROLE_PLAY 
+2025-04-24 11:45:23,993|[main.py: 75]|INFO|8330577984|GET参数: {'type': 'ROLE_PLAY'} 
+2025-04-24 11:45:27,881|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:45:27,882|[main.py: 81]|INFO|8330577984|POST/PUT参数: {"word":"周四"} 
+2025-04-24 11:45:29,171|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:45:29,171|[main.py: 81]|INFO|8330577984|POST/PUT参数: {"word":"周四"} 
+2025-04-24 11:45:43,155|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/account/role 
+2025-04-24 11:45:43,155|[main.py: 75]|INFO|8330577984|GET参数: {} 
+2025-04-24 11:45:43,162|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/topics?type=ROLE_PLAY 
+2025-04-24 11:45:43,162|[main.py: 75]|INFO|8330577984|GET参数: {'type': 'ROLE_PLAY'} 
+2025-04-24 11:45:47,347|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/account/role 
+2025-04-24 11:45:47,348|[main.py: 75]|INFO|8330577984|GET参数: {} 
+2025-04-24 11:46:13,207|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/account/role 
+2025-04-24 11:46:13,207|[main.py: 75]|INFO|8330577984|GET参数: {} 
+2025-04-24 11:46:23,133|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:46:23,133|[main.py: 81]|INFO|8330577984|POST/PUT参数: {"word":"周四"} 
+2025-04-24 11:46:49,298|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:46:49,299|[main.py: 81]|INFO|8330577984|POST/PUT参数: {"word":"周四"} 
+2025-04-24 11:47:09,016|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:47:09,017|[main.py: 81]|INFO|8330577984|POST/PUT参数: {"word":"周四"} 
+2025-04-24 11:47:13,791|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:47:13,791|[main.py: 81]|INFO|8330577984|POST/PUT参数: {"word":"周四"} 
+2025-04-24 11:47:23,306|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:47:23,307|[main.py: 81]|INFO|8330577984|POST/PUT参数: {"word":"周四"} 
+2025-04-24 11:48:10,215|[main.py: 71]|INFO|8330577984|[POST] http://localhost:8097/api/v1/message/word/detail 
+2025-04-24 11:48:10,215|[main.py: 81]|INFO|8330577984|POST/PUT参数: {"word":"周四"} 
+2025-04-24 14:10:10,313|[main.py: 71]|INFO|8330577984|[OPTIONS] http://localhost:8097/api/v1/account/role 
+2025-04-24 14:10:10,315|[main.py: 71]|INFO|8330577984|[OPTIONS] http://localhost:8097/api/v1/topics?type=ROLE_PLAY 
+2025-04-24 14:10:10,316|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/account/role 
+2025-04-24 14:10:10,317|[main.py: 75]|INFO|8330577984|GET参数: {} 
+2025-04-24 14:10:10,319|[main.py: 71]|INFO|8330577984|[GET] http://localhost:8097/api/v1/topics?type=ROLE_PLAY 
+2025-04-24 14:10:10,319|[main.py: 75]|INFO|8330577984|GET参数: {'type': 'ROLE_PLAY'} 
