@@ -43,10 +43,8 @@
 import { ref, onMounted, nextTick } from "vue";
 import { onShow } from "@dcloudio/uni-app";
 
-import LoadingRound from "@/components/LoadingRound.vue";
 import CommonHeader from "@/components/CommonHeader.vue";
 import type { PracticeSentence } from "@/models/models";
-import Single from "./components/Single.vue";
 import Statement from "./components/Statement.vue";
 import accountRequest from "@/api/account";
 import wordsPracticeRequest from "@/api/words_practice";

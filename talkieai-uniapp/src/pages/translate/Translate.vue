@@ -1,32 +1,34 @@
 <template>
   <view class="container">
-    <input 
-      class="input-box"
-      v-model="inputText"
-      placeholder="Enter English/Chinese text..."
-      type="text"
-      @input="handleInput"
-    />
+    <input class="input-box" v-model="inputText" placeholder="Enter English/Chinese text..." type="text"
+      @input="handleInput" />
     <button @click="translate" class="translate-btn">Translate</button>
 
     <view v-if="showResult" class="result-section">
       <view class="result-item">
-        <text class="label">English:</text>
-        <text class="content">{{ result.english }}</text>
+        <!-- <text class="label">English:</text> -->
+        <text class="content content_en">{{ result.english }}</text>
       </view>
       <view class="result-item">
-        <text class="label">Pronunciation:</text>
-        <text class="content">{{ result.pronunciation }}</text>
+        <!-- <text class="label">Pronunciation:</text> -->
+        <text class="content">英 {{ result.pronunciation }}</text>
+        <text v-if="result.pronunciation !== result.pronunciation_usa" class="content pronun_add">
+          美 {{ result.pronunciation_usa }}
+        </text>
       </view>
       <view class="result-item">
-        <text class="label">Chinese:</text>
+        <!-- <text class="label">Chinese:</text> -->
         <text class="content">{{ result.chinese }}</text>
       </view>
+
       <view class="examples">
-        <text class="examples-label">Examples:</text>
-        <block v-for="(example, index) in examples" :key="index">
+        <!-- <text class="examples-label">Examples:</text> -->
+        <Statement v-for="sentence in result.examples" :collect="sentence" :cannotCancel="false" />
+
+        <block v-for="(example, index) in result.examples" :key="index">
           <view class="example-item">
-            {{ example }}
+            <text class="example-en">{{ example.en }}</text>
+            <text class="example-cn">{{ example.cn }}</text>
           </view>
         </block>
       </view>
@@ -38,6 +40,7 @@
 
 import chatRequest from '@/api/chat';
 import { ref } from 'vue';
+import Statement from "./components/Statement.vue";
 
 export default {
 
@@ -49,7 +52,9 @@ export default {
       result: {
         english: '',
         pronunciation: '',
-        chinese: ''
+        chinese: '',
+        pronunciation_usa:'',
+        examples: []
       },
       examples: []
     };
@@ -76,9 +81,11 @@ export default {
           console.log(res.data);
           // Temporary mock data - should be replaced with real API calls
           this.result = {
-            english: this.inputText,
+            english: res.data.words_en,
             pronunciation: res.data.phonetic,
-            chinese: res.data.translation
+            chinese: res.data.translation,
+            pronunciation_usa: res.data.phonetic_usa,
+            examples: res.data.example
           };
           this.showResult = true;
 
@@ -132,4 +139,29 @@ export default {
   padding-left: 15rpx;
   border-left: 4rpx solid #007AFF;
 }
+.pronun_add{
+  margin-left: 20rpx;
+}
+
+.example-en {
+  display: block;
+  font-weight: bold;
+}
+
+.example-cn {
+  display: block;
+  color: #666;
+  margin-left: 20rpx;
+}
+
+.content_en{
+  display: block;
+  font-weight: bold;
+
+}
+
+.examples{
+  margin-top: 30rpx;
+}
+
 </style>

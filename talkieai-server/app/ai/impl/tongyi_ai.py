@@ -216,8 +216,25 @@ class TongyiComponent(ChatAI):
 
         invoke_dto = MessageInvokeDTO(messages=messages)
         result_json = self._original_invoke_chat_json(invoke_dto)
+
+        # 显式校验必要字段是否存在
+        if "phonetic" not in result_json or "translation" not in result_json:
+            raise ValueError("Missing required fields 'phonetic' or 'translation' in result_json")
+
+        # 构造 all_resp 对象
+        try:
+            all_resp = AIWordDetailResultAll(**result_json)
+        except TypeError as e:
+            raise ValueError(f"Failed to construct AIWordDetailResultAll from result_json: {e}")
+
+        # 返回结果前确保字段正确
         return AIWordDetailResult(
-            phonetic=result_json["phonetic"], translation=result_json["translation"]
+            phonetic=result_json["phonetic"],
+            translation=result_json["translation"],
+
+            example= all_resp.example,
+            phonetic_usa=all_resp.phonetic_usa,
+            words_en=all_resp.words_en
         )
 
     def _original_invoke_chat(self, dto: MessageInvokeDTO):

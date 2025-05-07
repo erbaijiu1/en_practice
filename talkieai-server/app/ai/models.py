@@ -92,9 +92,21 @@ class WordDetailParams:
 
 
 @dataclass
+class AIWordDetailResultAll:
+    example: Dict[str, str]  # 包含 'cn' 和 'en'
+    phonetic: str
+    phonetic_usa: str
+    translation: str
+    words_en: str
+
+@dataclass
 class AIWordDetailResult:
     phonetic: str
     translation: str
+
+    example: Dict[str, str]  # 包含 'cn' 和 'en'
+    phonetic_usa: str
+    words_en: str
 
 
 @dataclass

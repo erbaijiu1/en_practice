@@ -82,3 +82,10 @@ export interface PracticeSentence {
   struct: string;
   words: string;
 }
+
+export interface TranslateExample {
+  message_id?: string | null;
+  type: string;
+  en: string;
+  cn: string;
+}
