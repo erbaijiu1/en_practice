@@ -86,6 +86,7 @@ defineExpose({
 
     .content {
         margin-top: 16rpx;
+        margin-bottom: 60rpx;
         padding-top: 32rpx;
         background-color: #FFF;
 

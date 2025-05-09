@@ -4,33 +4,44 @@
       @input="handleInput" />
     <button @click="translate" class="translate-btn">Translate</button>
 
-    <view v-if="showResult" class="result-section">
-      <view class="result-item">
-        <!-- <text class="label">English:</text> -->
-        <text class="content content_en">{{ result.english }}</text>
+    <!-- 加载中显示 Loading -->
+    <LoadingRound v-if="wordDetailLoading" :min-height="200"></LoadingRound>
+
+    <view v-else-if="showResult" class="result-section">
+      <view class="result-item add_flex_too_side">
+        <view class="add_flex">
+          <!-- <text class="label">English:</text> -->
+          <text class="content content_en">{{ result.english }}</text>
+          <AudioPlayer class="pronunciation-play-icon icon_margin" :content="result.english" />
+        </view>
+        <view>
+          <Collect type="WORD" :content="result.english" />
+
+        </view>
+
       </view>
+
       <view class="result-item">
         <!-- <text class="label">Pronunciation:</text> -->
-        <text class="content">英 {{ result.pronunciation }}</text>
+        <text class="content pronunciation_font ">英 {{ result.pronunciation }}</text>
         <text v-if="result.pronunciation !== result.pronunciation_usa" class="content pronun_add">
           美 {{ result.pronunciation_usa }}
         </text>
       </view>
-      <view class="result-item">
+      <view class="result-item result_chiness">
         <!-- <text class="label">Chinese:</text> -->
         <text class="content">{{ result.chinese }}</text>
       </view>
 
       <view class="examples">
-        <!-- <text class="examples-label">Examples:</text> -->
-        <Statement v-for="sentence in result.examples" :collect="sentence" :cannotCancel="false" />
+        <Statement v-for="(item, index) in translatedExamples" :key="index" :collect="item" :cannotCancel="false" />
 
-        <block v-for="(example, index) in result.examples" :key="index">
+        <!-- <block v-for="(item, index) in translatedExamples" :key="index">
           <view class="example-item">
-            <text class="example-en">{{ example.en }}</text>
-            <text class="example-cn">{{ example.cn }}</text>
+            <text class="example-en">{{ item.en }}</text>
+            <text class="example-cn">{{ item.cn }}</text>
           </view>
-        </block>
+        </block> -->
       </view>
     </view>
   </view>
@@ -41,8 +52,18 @@
 import chatRequest from '@/api/chat';
 import { ref } from 'vue';
 import Statement from "./components/Statement.vue";
+import AudioPlayer from '@/components/AudioPlayer.vue';
+import LoadingRound from '@/components/LoadingRound.vue';
+import Collect from '@/components/Collect.vue';
+
 
 export default {
+  components: {
+    Statement, // 👈 显式注册组件
+    AudioPlayer
+    ,  LoadingRound
+    , Collect
+  },
 
   data() {
     return {
@@ -56,12 +77,21 @@ export default {
         pronunciation_usa:'',
         examples: []
       },
-      examples: []
+      examples: [],
+      wordDetailLoading: false,
+      translatedExamples: []
     };
   },
   methods: {
     handleInput() {
       // Input validation can be added here
+    },
+    transformExamples(examples) {
+      return examples.map(example => ({
+        type: 'example',
+        en: example.en,
+        cn: example.cn
+      }));
     },
     translate() {
       if (!this.inputText) {
@@ -73,30 +103,26 @@ export default {
       }
 
       this.wordDetailLoading = true;
-      chatRequest.wordDetail( {"word": this.inputText} ).then((res) => {
-          // wordPhoneticSymbol.value = res.data.phonetic;
-          // wordExplain.value = res.data.translation;
-          this.wordDetailLoading = false;
-          
-          console.log(res.data);
-          // Temporary mock data - should be replaced with real API calls
-          this.result = {
-            english: res.data.words_en,
-            pronunciation: res.data.phonetic,
-            chinese: res.data.translation,
-            pronunciation_usa: res.data.phonetic_usa,
-            examples: res.data.example
-          };
-          this.showResult = true;
+      chatRequest.wordDetail({ word: this.inputText }).then((res) => {
+        console.log(res.data);
 
-          this.examples = [
-            'Hello, how are you?',
-            'Hello world!',
-            'Good morning, hello!'
-          ];
+        // 设置 result 数据
+        this.result = {
+          english: res.data.words_en,
+          pronunciation: res.data.phonetic,
+          chinese: res.data.translation,
+          pronunciation_usa: res.data.phonetic_usa,
+          examples: res.data.example || []
+        };
 
+        this.wordDetailLoading = false;
+
+        // 转换示例数据
+        this.translatedExamples = this.transformExamples(this.result.examples);
+        console.log("translatedExamples:", this.translatedExamples);
+
+        this.showResult = true;
       });
-
     }
   }
 }
@@ -157,11 +183,42 @@ export default {
 .content_en{
   display: block;
   font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: 700;
 
 }
 
 .examples{
   margin-top: 30rpx;
+}
+
+
+.add_flex{
+  display: flex;
+  align-items: center;
+  
+}
+.icon_margin{
+  margin-left: 30rpx;
+}
+
+.pronunciation_font{
+  /* font-size: 1.2rem; */
+  font-weight: 700;
+  color: #999;
+}
+
+.add_flex_too_side{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.result_chiness{
+  /* add under line */
+  border-bottom: 1px solid #e8e8e8;
+  padding: 20rpx 0;
+
 }
 
 </style>

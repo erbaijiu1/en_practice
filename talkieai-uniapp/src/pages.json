@@ -127,11 +127,10 @@
         "iconPath": "static/edit.png"
       },
       {
-        // 新增翻译页面到主菜单
         "pagePath": "pages/translate/translate",
         "text": "翻译",
-        "selectedIconPath": "static/translate_select.png",
-        "iconPath": "static/translate.png"
+        "selectedIconPath": "static/translate_select.svg",
+        "iconPath": "static/translate.svg"
       }
 ,
       {

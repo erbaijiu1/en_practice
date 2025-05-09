@@ -5,7 +5,7 @@
         <view class="chat-list-left-top">
           <view class="selectable-text" selectable @mouseup="handleTextTouch"   @touchend="handleTextTouch"
           >
-            {{ collect.en}} 
+            {{ collect.en }} 
           </view>
         </view>
       </view>
@@ -17,7 +17,7 @@
       </view>
     </view>
     <view class="chat-list-left-bot">
-      <text>{{ collect.cn}}</text>
+      <text>{{ collect.cn }}</text>
     </view>
 
   </view>
@@ -109,12 +109,12 @@ const handleDelete = () => {
 
 <style lang="less">
 .statement-container {
-  padding: 32rpx;
+  // padding: 32rpx;
   border-bottom: 1px solid #e8e8e8;
 
   .chat-list-left-bot {
     font-size: 28rpx;
-    margin-top: 18rpx;
+    margin: 18rpx 0rpx;
     color: #707070;
     line-height: 40rpx;
   }
@@ -160,7 +160,7 @@ const handleDelete = () => {
   }
 
   .chat-list-action_playing {
-    width: 22rpx;
+    // width: 22rpx;
     height: 32rpx;
     display: flex;
     align-items: center;
