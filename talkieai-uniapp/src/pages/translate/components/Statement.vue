@@ -4,6 +4,7 @@
       <view class="chat-list-left-box">
         <view class="chat-list-left-top">
           <view class="selectable-text" selectable @mouseup="handleTextTouch"   @touchend="handleTextTouch"
+          @longpress="handleWordLongPress"
           >
             {{ collect.en }} 
           </view>
@@ -37,35 +38,48 @@ import { nextTick } from 'vue';
 // 添加选中功能
 const wordAnalysisPopup = ref(null);
 
-const handleTextTouch = (event: MouseEvent | TouchEvent) => {
-  // console.log("handleTextTouch");
-  const targetEvent = event as MouseEvent | TouchEvent;
+const handleWordLongPress = (e: any) => {
+  console.log("handleWordLongPress: ", e);
+  const selectedText = e.detail.text?.trim();
+  if (selectedText) {
+    wordAnalysisPopup.value.open(selectedText);
+  }
+};
 
-  // Use mouseup event for better text selection timing
+const handleTextTouch = () => {
+  const platform = uni.getSystemInfoSync().platform.toLowerCase();
+  console.log("platform:", platform);
+    // 明确列出支持 DOM 操作的平台
+    const supportedDOMPlatforms = [
+    // 'devtools',     // H5 开发者工具
+    'h5',           // H5 页面
+    'app-plus',     // App（H5+）
+    'mp-qq',        // QQ 小程序
+    'mp-baidu',     // 百度小程序
+    'mp-toutiao'    // 头条小程序
+  ];
+
+  if (!supportedDOMPlatforms.includes(platform)) {
+    // 不在白名单内的平台（如微信小程序），直接返回
+    return;
+  }
+
+  // 只有在非小程序平台才执行 DOM 操作
   const handleSelection = () => {
-  // console.log("handleTextTouch, here.");
     const selection = window.getSelection();
     if (!selection || selection.rangeCount === 0) return;
-    
-    const range = selection.getRangeAt(0);
-    const selectedText = range.toString().trim();
-    
-    // Extract pure word characters
-    // const word = selectedText.replace(/[^a-zA-Z]/g, '');
-    const word = selectedText
-    
-    if (word) {
-      console.log('Selected Word:', word);
-      wordAnalysisPopup.value.open(word);
+
+    const selectedText = selection.toString().trim();
+    if (selectedText) {
+      wordAnalysisPopup.value.open(selectedText);
     }
-    
-    // Cleanup
+
     document.removeEventListener('mouseup', handleSelection);
   };
 
-  // Add mouseup listener (works better with text selection)
   document.addEventListener('mouseup', handleSelection);
 };
+
 
 
 const emit = defineEmits();

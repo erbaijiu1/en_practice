@@ -7,7 +7,7 @@
             <LoadingRound v-if="wordDetailLoading" :min-height="200"></LoadingRound>
             <view v-else-if="wordPhoneticSymbol" class="content">
                 <view class="word-box row-bc">
-                    <text class="word-text">{{ word }}</text>
+                    <text class="word-text" selectable>{{ word }}</text>
                     <Collect type="WORD" :content="word" />
                 </view>
                 <view class="pronunciation-box row-sc">

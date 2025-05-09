@@ -129,8 +129,8 @@
       {
         "pagePath": "pages/translate/translate",
         "text": "翻译",
-        "selectedIconPath": "static/translate_select.svg",
-        "iconPath": "static/translate.svg"
+        "selectedIconPath": "static/translate_select.png",
+        "iconPath": "static/translate.png"
       }
 ,
       {
