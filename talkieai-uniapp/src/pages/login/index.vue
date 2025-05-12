@@ -5,7 +5,7 @@
       欢迎使用TalkAnytime AI
     </text>
     <text class="sub-title">
-      练习口语、写作的好帮手
+      <!-- 练习口语、写作的好帮手 -->
     </text>
     <text class="visitor-login" @tap="handleVisitorLogin()">随便逛逛</text>
   </view>
