@@ -1,11 +1,16 @@
 
 <template>
   <view>
-    <CommonHeader title="TalkAnytime">
+    <CommonHeader :leftIcon="true" :back-fn="handleBackPage" backgroundColor="#F5F5FE" title="TalkAnytime">
+            <template v-slot:content>
+                <text>单词练习</text>
+            </template>
+      </CommonHeader>
+    <!-- <CommonHeader title="TalkAnytime">
       <template v-slot:content>
         <text>单词练习</text>
       </template>
-    </CommonHeader>
+    </CommonHeader> -->
 
     <view class="content">
       <view class="chat-tab-box">
