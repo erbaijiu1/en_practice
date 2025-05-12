@@ -29,9 +29,9 @@
 
       <Topics class="topic-component" />
 
-      <view>
+      <!-- <view>
         <text class="visitor-login" @tap="goToWordsPractice()">6000单词快速记</text>
-      </view>
+      </view> -->
 
     </view>
   </view>

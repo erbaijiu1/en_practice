@@ -11,5 +11,7 @@ talkieai-server/.idea/modules.xml
 talkieai-server/.idea/talkieai-server.iml
 talkieai-server/.idea/vcs.xml
 talkieai-server/.idea/inspectionProfiles/profiles_settings.xml
-talkieai-server/.idea/inspectionProfiles/Project_Default.xml
+talkieai-server/.idea/
 .DS_Store
+talkieai-server/logs/
+talkieai-server/logs/copilot_data_sync_svr.log

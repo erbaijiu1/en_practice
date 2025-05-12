@@ -34,7 +34,11 @@
 					<image class="setting-card-logo" src="/static/setting.png" />
 					<text class="setting-card-title">设置</text>
 				</view> -->
-				<view class="setting-card" @tap="goLearningLanguage">
+				<view>
+					<text class="setting-card" @tap="goToWordsPractice()">单词句中练</text>
+				</view>
+
+				<!-- <view class="setting-card" @tap="goLearningLanguage">
 					<image class="setting-card-logo" src="/static/setting.png" />
 					<text class="setting-card-title">学习语言</text>
 					<text class="setting-card-value" style="margin-right: 50rpx;">{{ accountInfo.target_language_label }}</text>
@@ -50,7 +54,7 @@
 				<view class="setting-card" @tap="goGithub">
 					<image class="setting-card-logo" src="/static/github/github-mark.png" />
 					<text class="setting-card-title">Github</text>
-				</view>
+				</view> -->
 				<!-- 如果是小程序登录 -->
 				<view v-if="accountInfo.account_id.indexOf('visitor') < 0" class="logout-box" @tap="hangleLogout">
 					<!-- <image class="setting-card-logo" src="/static/default-account-avatar.png" /> -->
@@ -141,6 +145,13 @@ const goLearningLanguage = () => {
 		url: '/pages/my/learnLanguage'
 	});
 }
+
+const goToWordsPractice = () => {
+  uni.navigateTo({
+    url: '/pages/words_practice/index'
+  });
+};
+
 </script>
 <style scoped lang="less">
 @import url('@/less/global.less');
