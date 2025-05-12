@@ -24,7 +24,7 @@
       <view class="result-item">
         <!-- <text class="label">Pronunciation:</text> -->
         <text class="content pronunciation_font ">英 {{ result.pronunciation }}</text>
-        <text v-if="result.pronunciation !== result.pronunciation_usa" class="content pronun_add">
+        <text v-if="result.pronunciation !== result.pronunciation_usa" class="content pronun_add pronunciation_font">
           美 {{ result.pronunciation_usa }}
         </text>
       </view>

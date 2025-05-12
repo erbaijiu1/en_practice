@@ -2,19 +2,23 @@
   <view class="statement-container">
     <view class="chat-list-box">
       <view class="chat-list-left-box">
-        <view class="chat-list-left-top">
+        <!-- <view class="chat-list-left-top">
           <view class="selectable-text" selectable @mouseup="handleTextTouch"   @touchend="handleTextTouch"
           >
             {{ collect.content }} 
           </view>
-        </view>
+        </view> -->
+          <FunctionalText ref="functionalTextRef" :auto-play="false" 
+            :wordClickable="true" :text="collect.content" :translateShow="false"
+            :textShadow="false" />
+
       </view>
 
-      <view class="chat-list-action-box">
+      <!-- <view class="chat-list-action-box">
         <AudioPlayer class="chat-list-action_playing btn-box" :messageId="collect.message_id"
           :content="collect.content" />
-        <!-- <image v-if="!cannotCancel" @tap="handleDelete" class="chat-list-action btn-box" src="/static/deleted.png" mode="heightFix" /> -->
-      </view>
+        <image v-if="!cannotCancel" @tap="handleDelete" class="chat-list-action btn-box" src="/static/deleted.png" mode="heightFix" />
+      </view> -->
     </view>
     <view class="chat-list-left-bot">
       <text>{{ collect.translation }}</text>
@@ -35,7 +39,7 @@ import AudioPlayer from "@/components/AudioPlayer.vue";
 import type { PracticeSentence } from "@/models/models";
 import accountRequest from "@/api/account";
 import WordAnalysisPopup from "@/components/WordAnalysisPopup.vue";
-import { nextTick } from 'vue';
+import FunctionalText from "@/components/FunctionalText.vue";
 
 // 添加选中功能
 const wordAnalysisPopup = ref(null);

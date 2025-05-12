@@ -12,7 +12,7 @@ class Config:
     SQLALCHEMY_DATABASE_URL: str = os.getenv('DATABASE_URL')
 
     # 文件上传路径
-    TEMP_SAVE_FILE_PATH = os.getenv('TEMP_SAVE_FILE_PATH')
+    TEMP_SAVE_FILE_PATH = os.getenv('TEMP_SAVE_FILE_PATH', 'cache_data')
 
     # 微软语音
     AZURE_KEY = os.getenv('AZURE_KEY')

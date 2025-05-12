@@ -3,19 +3,23 @@
     <view class="chat-list-box">
       <view class="chat-list-left-box">
         <view class="chat-list-left-top">
-          <view class="selectable-text" selectable @mouseup="handleTextTouch"   @touchend="handleTextTouch"
+          <FunctionalText ref="functionalTextRef" :auto-play="false" 
+            :wordClickable="true" :text="collect.en" :translateShow="false"
+            :textShadow="false" />
+
+          <!-- <view class="selectable-text" selectable @mouseup="handleTextTouch"   @touchend="handleTextTouch"
           @longpress="handleWordLongPress"
           >
             {{ collect.en }} 
-          </view>
+          </view> -->
         </view>
       </view>
 
-      <view class="chat-list-action-box">
+      <!-- <view class="chat-list-action-box">
         <AudioPlayer class="chat-list-action_playing btn-box" :messageId="collect.message_id"
           :content="collect.en" />
-        <!-- <image v-if="!cannotCancel" @tap="handleDelete" class="chat-list-action btn-box" src="/static/deleted.png" mode="heightFix" /> -->
-      </view>
+        <image v-if="!cannotCancel" @tap="handleDelete" class="chat-list-action btn-box" src="/static/deleted.png" mode="heightFix" /> 
+      </view> -->
     </view>
     <view class="chat-list-left-bot">
       <text>{{ collect.cn }}</text>
@@ -29,58 +33,13 @@
 <script setup lang="ts">
 import { ref, defineEmits, defineProps } from "vue";
 import AudioPlayer from "@/components/AudioPlayer.vue";
-import type { PracticeSentence } from "@/models/models";
 import type { TranslateExample } from "@/models/models";
 import accountRequest from "@/api/account";
 import WordAnalysisPopup from "@/components/WordAnalysisPopup.vue";
-import { nextTick } from 'vue';
+import FunctionalText from "@/components/FunctionalText.vue";
 
 // 添加选中功能
 const wordAnalysisPopup = ref(null);
-
-const handleWordLongPress = (e: any) => {
-  console.log("handleWordLongPress: ", e);
-  const selectedText = e.detail.text?.trim();
-  if (selectedText) {
-    wordAnalysisPopup.value.open(selectedText);
-  }
-};
-
-const handleTextTouch = () => {
-  const platform = uni.getSystemInfoSync().platform.toLowerCase();
-  console.log("platform:", platform);
-    // 明确列出支持 DOM 操作的平台
-    const supportedDOMPlatforms = [
-    // 'devtools',     // H5 开发者工具
-    'h5',           // H5 页面
-    'app-plus',     // App（H5+）
-    'mp-qq',        // QQ 小程序
-    'mp-baidu',     // 百度小程序
-    'mp-toutiao'    // 头条小程序
-  ];
-
-  if (!supportedDOMPlatforms.includes(platform)) {
-    // 不在白名单内的平台（如微信小程序），直接返回
-    return;
-  }
-
-  // 只有在非小程序平台才执行 DOM 操作
-  const handleSelection = () => {
-    const selection = window.getSelection();
-    if (!selection || selection.rangeCount === 0) return;
-
-    const selectedText = selection.toString().trim();
-    if (selectedText) {
-      wordAnalysisPopup.value.open(selectedText);
-    }
-
-    document.removeEventListener('mouseup', handleSelection);
-  };
-
-  document.addEventListener('mouseup', handleSelection);
-};
-
-
 
 const emit = defineEmits();
 // 定义Collect类型为prop
