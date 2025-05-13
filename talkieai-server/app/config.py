@@ -46,7 +46,7 @@ class Config:
     TOKEN_EXPIRE_TIME = int(os.getenv("TOKEN_EXPIRE_TIME"))
 
     # API前缀
-    API_PREFIX = os.getenv('API_PREFIX', '/api')
+    API_PREFIX = os.getenv('API_PREFIX', '/aitalk')
 
     # 日志路径及文字名全路径配置
-    GLOBAL_LOG_PATH = os.getenv("GLOBAL_LOG_PATH", "./logs/copilot_data_sync_svr.log")
+    GLOBAL_LOG_PATH = os.getenv("GLOBAL_LOG_PATH", "./logs/talk_server.log")
