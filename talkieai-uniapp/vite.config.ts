@@ -5,8 +5,6 @@ const target = "https://crm.shoxfashion.com/api/cms-dashboard/";
 export default defineConfig({
   plugins: [uni()],
   server: {
-    // 确保热重载功能是启用的
-    hmr: true, // 这是默认值，通常可以省略
     host: "0.0.0.0",
     proxy: {
       "/api/cms-dashboard": {
