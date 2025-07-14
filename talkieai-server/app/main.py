@@ -78,7 +78,7 @@ async def log_all_requests(request: Request, call_next):
     if request.method in ("POST", "PUT", "PATCH"):
         # 读取请求体并缓存（解决body只能读取一次的问题）
         body = await request.body()
-        logger.info(f"POST/PUT参数: {body.decode('utf-8')}")
+        logger.info(f"POST/PUT参数: {body.decode('utf-8', errors='ignore')}")
 
         # # 结构化解析尝试
         # content_type = request.headers.get('content-type', '')
