@@ -12,7 +12,7 @@ RUN rm -f /etc/apt/sources.list /etc/apt/sources.list.d/* \
  && apt-get install -y --no-install-recommends libasound2 curl \
  && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt  -i https://mirrors.cloud.tencent.com/pypi/simple
 
 EXPOSE 8097
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8097"]
