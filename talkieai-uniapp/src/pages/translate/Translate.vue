@@ -87,6 +87,7 @@ export default {
       // Input validation can be added here
     },
     transformExamples(examples) {
+      console.log("examples:", examples);
       return examples.map(example => ({
         type: 'example',
         en: example.en,
@@ -112,7 +113,8 @@ export default {
           pronunciation: res.data.phonetic,
           chinese: res.data.translation,
           pronunciation_usa: res.data.phonetic_usa,
-          examples: res.data.example || []
+          // examples: res.data.example || []
+          examples: Array.isArray(res.data.example) ? res.data.example : [res.data.example] // 确保 examples 是数组
         };
 
         this.wordDetailLoading = false;
